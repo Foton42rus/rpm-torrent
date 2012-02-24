@@ -1,4 +1,5 @@
 package com.jbittorrent.client.mainGui;
+import com.jbittorrent.client.controller.DownloadManagerPanel;
 import com.jbittorrent.client.jtabbedpanels.*;
 import java.awt.EventQueue;
 
@@ -12,6 +13,7 @@ import java.awt.Color;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -20,15 +22,16 @@ import javax.swing.JTabbedPane;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import java.awt.SystemColor;
-import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileFilter;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 public class MainGui {
 
 	private JFrame frmJtorrent;
-	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -60,7 +63,7 @@ public class MainGui {
 		frmJtorrent = new JFrame();
 		frmJtorrent.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGui.class.getResource("/images/icon.png")));
 		frmJtorrent.setTitle("j-torrent");
-		frmJtorrent.setBounds(100, 100, 976, 767);
+		frmJtorrent.setBounds(100, 100, 1041, 819);
 		frmJtorrent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel mainPanel = new JPanel();
@@ -89,14 +92,21 @@ public class MainGui {
 		panel.add(centerRegion, BorderLayout.CENTER);
 		centerRegion.setLayout(new BorderLayout(0, 0));
 		
+		JPanel lowerRegion = new JPanel();
+		lowerRegion.setBorder(new LineBorder(SystemColor.activeCaption));
+		
+		JPanel toolBarContainer = new JPanel();
+		toolBarContainer.setAlignmentX(Component.LEFT_ALIGNMENT);
+		toolBarContainer.setBackground(new Color(230, 230, 250));
+		centerRegion.add(toolBarContainer, BorderLayout.NORTH);
+		toolBarContainer.setLayout(new BorderLayout(0, 0));
+		
 		JToolBar toolBar = new JToolBar();
+		toolBar.setAlignmentX(Component.LEFT_ALIGNMENT);
+		toolBarContainer.add(toolBar);
 		toolBar.setBorderPainted(false);
 		toolBar.setBackground(new Color(230, 230, 250));
 		toolBar.setFloatable(false);
-		centerRegion.add(toolBar,BorderLayout.NORTH);
-		
-		JPanel lowerRegion = new JPanel();
-		lowerRegion.setBorder(new LineBorder(SystemColor.activeCaption));
 		
 		JButton addTorFile = new JButton("");
 		addTorFile.setBackground(new Color(230, 230, 250));
@@ -135,9 +145,8 @@ public class MainGui {
 		settings.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/settings.png")));
 		settings.setBackground(new Color(230, 230, 250));
 		toolBar.add(settings);
-		
-		table = new JTable();
-		centerRegion.add(table, BorderLayout.CENTER);
+		JPanel downloadManagerPanelContainer=new DownloadManagerPanel();
+		centerRegion.add(downloadManagerPanelContainer, BorderLayout.CENTER);
 		lowerRegion.setBackground(new Color(255, 255, 255));
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -145,7 +154,7 @@ public class MainGui {
 		//ch
 		tabbedPane.setSize(lowerRegion.getSize());
 		GenaralPanel gp=new GenaralPanel();
-		gp.setPreferredSize(new Dimension(944, 76));
+		gp.setPreferredSize(new Dimension(944, 129));
 		gp.setBorder(null);
 		Toolkit.getDefaultToolkit().getDesktopProperty("Size");
 		//gp.setPreferredSize(new Dimension(945, 194));
@@ -181,6 +190,29 @@ public class MainGui {
 		mnFile.add(mntmAddTorrentFile);
 		
 		JMenuItem mntmAddNewTorrent = new JMenuItem("Add New Torrent");
+		mntmAddNewTorrent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser jfc=new JFileChooser();
+				jfc.setDialogTitle("Please select the torrent file to add..");
+				jfc.setDialogType(JFileChooser.OPEN_DIALOG);
+				jfc.setFileFilter(new FileFilter(){
+					public String getDescription(){
+						return "Only Torrent files";
+					}
+					public boolean accept(File f){
+						if(f.isDirectory())
+							return true;
+						else if(f.getName().endsWith(".torrent"))
+							return true;
+						else return false;
+					}
+				});
+				int result=jfc.showOpenDialog(frmJtorrent);
+				if(result==JFileChooser.APPROVE_OPTION){
+					//TODO Insert logic to add torrent:rajeev
+				}
+			}
+		});
 		mnFile.add(mntmAddNewTorrent);
 		
 		JMenuItem mntmCreateNewTorrent = new JMenuItem("Create New Torrent");
