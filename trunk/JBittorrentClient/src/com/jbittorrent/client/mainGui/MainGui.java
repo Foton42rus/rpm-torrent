@@ -120,28 +120,33 @@ public class MainGui {
 		toolBar.add(addTorUrl);
 		toolBar.addSeparator();
 		JButton newTorrent = new JButton("");
+		newTorrent.setToolTipText("Create New torrent");
 		newTorrent.setBackground(new Color(230, 230, 250));
 		newTorrent.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/new_torr.png")));
 		toolBar.add(newTorrent);
 		toolBar.addSeparator();
 		
 		JButton torrentStart = new JButton("");
+		torrentStart.setToolTipText("Start Downloading");
 		torrentStart.setBackground(new Color(230, 230, 250));
 		torrentStart.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/start.png")));
 		toolBar.add(torrentStart);
 		
 		JButton pauseTorrent = new JButton("");
+		pauseTorrent.setToolTipText("Pause Downloading");
 		pauseTorrent.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/pause.png")));
 		pauseTorrent.setBackground(new Color(230, 230, 250));
 		toolBar.add(pauseTorrent);
 		
 		JButton stopTorrent = new JButton("");
+		stopTorrent.setToolTipText("Stop Downloading");
 		stopTorrent.setBackground(new Color(230, 230, 250));
 		stopTorrent.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/stop.png")));
 		toolBar.add(stopTorrent);
 		toolBar.addSeparator();
 		
 		JButton settings = new JButton("");
+		settings.setToolTipText("Settings");
 		settings.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/settings.png")));
 		settings.setBackground(new Color(230, 230, 250));
 		toolBar.add(settings);
