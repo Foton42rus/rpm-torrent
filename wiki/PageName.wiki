@@ -14,7 +14,7 @@ _About Bittorent protocol_
 
 
 
-*What are we going to _Do_*
+*What are we going to _Do_* ?
 
 As there are lot of implementation of Bittorrent protocol and, so, many
 Bittorrent clients. But there are only few of them that are written in Java.
