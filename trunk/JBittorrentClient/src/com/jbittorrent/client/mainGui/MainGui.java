@@ -1,5 +1,6 @@
 package com.jbittorrent.client.mainGui;
 import com.jbittorrent.client.controller.DownloadManagerPanel;
+import com.jbittorrent.client.controller.Downloader;
 import com.jbittorrent.client.jtabbedpanels.*;
 import java.awt.EventQueue;
 
@@ -17,6 +18,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 import javax.swing.JTabbedPane;
 import java.awt.FlowLayout;
@@ -32,7 +34,10 @@ import java.io.File;
 public class MainGui {
 
 	private JFrame frmJtorrent;
-
+	private static JButton resumeTorrent;
+	private static JButton pauseTorrent ;
+	private static JButton stopTorrent ;
+	private DownloadManagerPanel downloadManagerPanelContainer;
 	/**
 	 * Launch the application.
 	 */
@@ -109,6 +114,12 @@ public class MainGui {
 		toolBar.setFloatable(false);
 		
 		JButton addTorFile = new JButton("");
+		addTorFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO Not working yet:make it to work:rajeev
+				//JOptionPane.showInternalMessageDialog(frmJtorrent, "Enter the URL of torrent file");
+			}
+		});
 		addTorFile.setBackground(new Color(230, 230, 250));
 		addTorFile.setToolTipText("Add torrent from file");
 		addTorFile.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/file_add_tor.png")));
@@ -126,19 +137,34 @@ public class MainGui {
 		toolBar.add(newTorrent);
 		toolBar.addSeparator();
 		
-		JButton torrentStart = new JButton("");
-		torrentStart.setToolTipText("Start Downloading");
-		torrentStart.setBackground(new Color(230, 230, 250));
-		torrentStart.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/start.png")));
-		toolBar.add(torrentStart);
+		resumeTorrent = new JButton("");
+		resumeTorrent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				downloadManagerPanelContainer.actionResume();
+			}
+		});
+		resumeTorrent.setToolTipText("Start Downloading");
+		resumeTorrent.setBackground(new Color(230, 230, 250));
+		resumeTorrent.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/start.png")));
+		toolBar.add(resumeTorrent);
 		
-		JButton pauseTorrent = new JButton("");
+		pauseTorrent = new JButton("");
+		pauseTorrent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				downloadManagerPanelContainer.actionPause();
+			}
+		});
 		pauseTorrent.setToolTipText("Pause Downloading");
 		pauseTorrent.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/pause.png")));
 		pauseTorrent.setBackground(new Color(230, 230, 250));
 		toolBar.add(pauseTorrent);
 		
-		JButton stopTorrent = new JButton("");
+		stopTorrent = new JButton("");
+		stopTorrent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				downloadManagerPanelContainer.actionStop();
+			}
+		});
 		stopTorrent.setToolTipText("Stop Downloading");
 		stopTorrent.setBackground(new Color(230, 230, 250));
 		stopTorrent.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/stop.png")));
@@ -150,7 +176,7 @@ public class MainGui {
 		settings.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/settings.png")));
 		settings.setBackground(new Color(230, 230, 250));
 		toolBar.add(settings);
-		JPanel downloadManagerPanelContainer=new DownloadManagerPanel();
+		downloadManagerPanelContainer=new DownloadManagerPanel();
 		centerRegion.add(downloadManagerPanelContainer, BorderLayout.CENTER);
 		lowerRegion.setBackground(new Color(255, 255, 255));
 		
@@ -224,6 +250,11 @@ public class MainGui {
 		mnFile.add(mntmCreateNewTorrent);
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		mnFile.add(mntmExit);
 		
 		JMenu mnOptions = new JMenu("Options");
@@ -245,5 +276,28 @@ public class MainGui {
 			}
 		});
 		mnHelp.add(mntmAboutUs);
+	}
+	public static void updateToolBarStatus(int STATUSOFBUTTONS){
+		switch(STATUSOFBUTTONS){
+		case Downloader.DOWNLOADING:
+			resumeTorrent.setEnabled(false);
+			pauseTorrent.setEnabled(true);
+			stopTorrent.setEnabled(true);
+			break;
+		case Downloader.PAUSED:
+			resumeTorrent.setEnabled(true);
+			pauseTorrent.setEnabled(false);
+			stopTorrent.setEnabled(true);
+			break;
+		case Downloader.ERROR:
+			resumeTorrent.setEnabled(true);
+			pauseTorrent.setEnabled(false);
+			stopTorrent.setEnabled(true);
+			break;
+		default://Assume completed or cancelled
+			resumeTorrent.setEnabled(false);
+			pauseTorrent.setEnabled(false);
+			stopTorrent.setEnabled(false);
+		}
 	}
 }
