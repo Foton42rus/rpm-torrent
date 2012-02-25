@@ -13,6 +13,7 @@ public class Downloader extends Observable implements Runnable{
 	public static final int SEEDING=4;
 	public static final int STOPPED=5;
 	
+	private String name;
 	private int size;//Download size
 	private int status;//current status
 	private int downloaded;//Amount downloaded
@@ -24,6 +25,12 @@ public class Downloader extends Observable implements Runnable{
 		//TODO Add some more logic to download and call download function which must be created
 	}
 	//Getters and setters
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getSize() {
 		return size;
 	}
