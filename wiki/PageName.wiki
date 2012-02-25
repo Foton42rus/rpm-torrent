@@ -14,11 +14,11 @@ _About Bittorent protocol_
 
 
 
-*What we are going to _Do_*
+*What are we going to _Do_*
 
 As there are lot of implementation of Bittorrent protocol and, so, many
 Bittorrent clients. But there are only few of them that are written in Java.
-Actually, the only one that I found is the Azureus client. It is an amazingly
+Actually, the only one that we found is the Azureus client. It is an amazingly
 complete client, with many features, plug-in and so on. And as it is very
 complete, it is in the same time very complex, with many interfaces and
 no real API available. The idea then was to create a new client, i.e. a new
