@@ -6,11 +6,11 @@ Bittorent client in JAVA.
 (Tool to provide better way of using P2P network)
 
 _About Bittorent protocol_
- *Bit torrent is a P2P File Sharing protocol
+ * Bit torrent is a P2P File Sharing protocol
 
- *Torrent file contains information about the files to be shared and the tracker    to contact
+ * Torrent file contains information about the files to be shared and the tracker    to contact
 
- *Tracker coordinates the peers exchanges for given torrent files
+ * Tracker coordinates the peers exchanges for given torrent files
 
 
 
