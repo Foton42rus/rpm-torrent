@@ -60,7 +60,7 @@ public class AboutDialog extends javax.swing.JDialog {
                             jLabel2.setText("A Simple Java Torrent Downloader");
                             jLabel3 = new javax.swing.JLabel();
                             
-                                   jLabel3.setText("<html><align=\"center\">This is a simple java torrent downloader implemented in swing with MVC.<br/> This software can be further extended to a full featured torrent clinet like Azures.<br/>.");
+                                   jLabel3.setText("<html><align=\"center\">This is a simple java torrent downloader implemented in swing with MVC.<br/> This software can be further extended to a full featured torrent client like Azureas.<br/>.");
                                    jLabel4 = new javax.swing.JLabel();
                                    
                                           jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
