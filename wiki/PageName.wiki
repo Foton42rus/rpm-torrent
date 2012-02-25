@@ -1,0 +1,19 @@
+#describing basic aspects of project
+
+*Introduction*
+
+Bittorent client in JAVA.
+(Tool to provide better way of using P2P network)
+
+_About Bittorent protocol_
+ *Bit torrent is a P2P File Sharing protocol
+
+ *Torrent file contains information about the files to be shared and the tracker    to contact
+
+ *Tracker coordinates the peers exchanges for given torrent files
+
+
+
+*What we are going to _Do_*
+
+we are building a Java based bittorent client as we have already have a java based client called _Azerus_ but it is quiet complex with its functionality and naive user intelligence. Taking it as tombstone we making our effort to create a simple and reliable java based client in order to overcome the difficulties which has been seen earlier with Azerus.
