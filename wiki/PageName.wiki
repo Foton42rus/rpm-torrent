@@ -16,4 +16,13 @@ _About Bittorent protocol_
 
 *What we are going to _Do_*
 
-we are building a Java based bittorent client as we have already have a java based client called _Azerus_ but it is quiet complex with its functionality and naive user intelligence. Taking it as tombstone we making our effort to create a simple and reliable java based client in order to overcome the difficulties which has been seen earlier with Azerus.
+As there are lot of implementation of Bittorrent protocol and, so, many
+Bittorrent clients. But there are only few of them that are written in Java.
+Actually, the only one that I found is the Azureus client. It is an amazingly
+complete client, with many features, plug-in and so on. And as it is very
+complete, it is in the same time very complex, with many interfaces and
+no real API available. The idea then was to create a new client, i.e. a new
+implementation of the protocol, as an API with maybe less features, but
+with a much lower complexity, a client that can be easily understandable
+and updatable for future work on it and therefore easily embeddable in
+another application.
