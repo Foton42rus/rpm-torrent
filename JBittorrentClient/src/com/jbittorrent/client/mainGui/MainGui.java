@@ -69,7 +69,7 @@ public class MainGui {
 		frmJtorrent.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGui.class.getResource("/images/icon.png")));
 		frmJtorrent.setTitle("j-torrent");
 		frmJtorrent.setBounds(100, 100, 1041, 819);
-		frmJtorrent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmJtorrent.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JPanel mainPanel = new JPanel();
 		frmJtorrent.getContentPane().add(mainPanel, BorderLayout.CENTER);
@@ -247,6 +247,11 @@ public class MainGui {
 		mnFile.add(mntmAddNewTorrent);
 		
 		JMenuItem mntmCreateNewTorrent = new JMenuItem("Create New Torrent");
+		mntmCreateNewTorrent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO create a dialog for create new torrent
+			}
+		});
 		mnFile.add(mntmCreateNewTorrent);
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
