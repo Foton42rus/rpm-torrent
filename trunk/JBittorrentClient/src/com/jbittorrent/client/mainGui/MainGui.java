@@ -14,6 +14,7 @@ import java.awt.Color;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -250,6 +251,8 @@ public class MainGui {
 		mntmCreateNewTorrent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO create a dialog for create new torrent
+				JDialog jd=new CreateNewTorrentDialog();
+				jd.setLocationRelativeTo(frmJtorrent);
 			}
 		});
 		mnFile.add(mntmCreateNewTorrent);
@@ -277,7 +280,8 @@ public class MainGui {
 		JMenuItem mntmAboutUs = new JMenuItem("About Us");
 		mntmAboutUs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new AboutDialog(null);
+				new AboutDialog(frmJtorrent).setLocationRelativeTo(frmJtorrent);
+				
 			}
 		});
 		mnHelp.add(mntmAboutUs);
