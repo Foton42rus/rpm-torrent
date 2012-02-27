@@ -2,7 +2,7 @@ package com.jbittorrent.client.jtabbedpanels;
 
 import javax.swing.JPanel;
 
-public class Speed extends JPanel {
+public class SpeedPanel extends JPanel {
 
 	/**
 	 * 
@@ -12,7 +12,7 @@ public class Speed extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Speed() {
+	public SpeedPanel() {
 
 	}
 

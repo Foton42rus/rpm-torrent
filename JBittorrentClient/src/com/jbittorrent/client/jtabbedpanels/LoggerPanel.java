@@ -2,7 +2,7 @@ package com.jbittorrent.client.jtabbedpanels;
 
 import javax.swing.JPanel;
 
-public class Tracker extends JPanel {
+public class LoggerPanel extends JPanel {
 
 	/**
 	 * 
@@ -12,7 +12,7 @@ public class Tracker extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Tracker() {
+	public LoggerPanel() {
 
 	}
 
