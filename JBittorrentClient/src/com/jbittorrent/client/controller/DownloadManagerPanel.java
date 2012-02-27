@@ -15,8 +15,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import sun.misc.Cleaner;
-
 import com.jbittorrent.client.mainGui.MainGui;
 
 public class DownloadManagerPanel extends JPanel implements Observer{

@@ -19,6 +19,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CreateNewTorrentDialog extends JDialog {
 
@@ -170,13 +172,18 @@ public class CreateNewTorrentDialog extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Create and Save as");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				JButton createButton = new JButton("Create and Save as");
+				createButton.setActionCommand("CREATE");
+				buttonPane.add(createButton);
+				getRootPane().setDefaultButton(createButton);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
