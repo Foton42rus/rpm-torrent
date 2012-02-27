@@ -2,7 +2,7 @@ package com.jbittorrent.client.jtabbedpanels;
 
 import javax.swing.JPanel;
 
-public class Peers extends JPanel {
+public class FilesPanel extends JPanel {
 
 	/**
 	 * 
@@ -12,7 +12,7 @@ public class Peers extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Peers() {
+	public FilesPanel() {
 
 	}
 
