@@ -33,7 +33,7 @@ import java.io.File;
 
 public class MainGui {
 
-	private JFrame frmJtorrent;
+	public static JFrame frmJtorrent;
 	private static JButton resumeTorrent;
 	private static JButton pauseTorrent ;
 	private static JButton stopTorrent ;
@@ -118,19 +118,32 @@ public class MainGui {
 			public void actionPerformed(ActionEvent e) {
 				//TODO Not working yet:make it to work:rajeev
 				//JOptionPane.showInternalMessageDialog(frmJtorrent, "Enter the URL of torrent file");
-			}
+				JDialog jsFrmFile =new AddTorrentFrmFile();
+				jsFrmFile.setLocationRelativeTo(frmJtorrent);			}
 		});
 		addTorFile.setBackground(new Color(230, 230, 250));
 		addTorFile.setToolTipText("Add torrent from file");
 		addTorFile.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/file_add_tor.png")));
 		toolBar.add(addTorFile);
 		JButton addTorUrl=new JButton("");
+		addTorUrl.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog jsFrmUrl =new AddTorrentFromURl();
+				jsFrmUrl.setLocationRelativeTo(frmJtorrent);
+			}
+		});
 		addTorUrl.setBackground(new Color(230, 230, 250));
 		addTorUrl.setToolTipText("Add torrent form a url");
 		addTorUrl.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/add_tor_url.png")));
 		toolBar.add(addTorUrl);
 		toolBar.addSeparator();
 		JButton newTorrent = new JButton("");
+		newTorrent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			JDialog jsnewTorrent=new CreateNewTorrentDialog();
+			jsnewTorrent.setLocationRelativeTo(frmJtorrent);
+			}
+		});
 		newTorrent.setToolTipText("Create New torrent");
 		newTorrent.setBackground(new Color(230, 230, 250));
 		newTorrent.setIcon(new ImageIcon(MainGui.class.getResource("/images/toolbarimage/new_torr.png")));
@@ -218,6 +231,12 @@ public class MainGui {
 		menuBar.add(mnFile);
 		
 		JMenuItem mntmAddTorrentFile = new JMenuItem("Add Torrent File From Url");
+		mntmAddTorrentFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			JDialog jsFrmURL=new AddTorrentFromURl();
+			jsFrmURL.setLocationRelativeTo(frmJtorrent);
+			}
+		});
 		mnFile.add(mntmAddTorrentFile);
 		
 		JMenuItem mntmAddNewTorrent = new JMenuItem("Add New Torrent");
